@@ -10,11 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_above="@+id/horizontal_dropdown_icon_menu_items"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/dropdown_custom_icon_menu"
+        android:layout_toStartOf="@+id/dropdown_custom_icon_menu"
         android:fontFamily="serif-monospace"
         android:gravity="left|center"
         android:text="CS 465 Lecture"
+        android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@android:color/background_dark"
         android:textSize="20dp"
@@ -28,6 +29,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_gravity="center"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
         android:background="@android:color/transparent"
         android:onClick="horizontalDropDownIconMenu"
         android:padding="16dp"
@@ -46,6 +49,7 @@
         android:visibility="invisible">
 
         <Button
+            android:id="@+id/select_student"
             android:layout_width="185dp"
             android:layout_height="match_parent"
             android:background="@android:color/darker_gray"
@@ -59,9 +63,11 @@
             android:paddingTop="5dp"
             android:text="select student"
             android:textColor="@android:color/black"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/history"
             android:layout_width="188dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
@@ -76,6 +82,7 @@
             android:paddingTop="5dp"
             android:text="history"
             android:textColor="@android:color/black"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
     </LinearLayout>
