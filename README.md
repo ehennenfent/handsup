@@ -1,2 +1,2 @@
 # handsup
-CS 465 Tam Project
+CS 465 Team Project
