@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:src="@drawable/handsup"
+        android:scaleType="centerCrop"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="top"
+        android:background="#dff0ffff">
+    
+        <Toolbar
+            android:id="@+id/toolbar_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:titleTextAppearance="@style/ToolbarTitleTextAppearance"
+            android:background="#006a4e"
+            android:title="@string/app_name" />
+
+
+        <LinearLayout
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+            <Button
+                android:id="@+id/course"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#60006a4e"
+                android:layout_margin="4dp"
+                android:text="Course List"
+                android:textColor="@android:color/white"/>
+
+            <Button
+                android:id="@+id/history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#60006a4e"
+                android:layout_margin="4dp"
+                android:text="History"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+    
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/wrong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="40dp"
+                android:paddingTop="20dp"
+                android:layout_alignParentLeft="true"
+                android:background="#33FF0000"
+                android:layout_alignBottom="@id/pic"
+                android:drawableTop="@drawable/ic_close_black_48dp"/>
+    
+            <ImageView
+                android:id="@+id/pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chris"
+
+                android:layout_centerHorizontal="true"/>
+    
+            <Button
+                android:id="@+id/right"
+                android:paddingTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@id/pic"
+                android:background="#3300FF00"
+                android:drawableTop="@drawable/ic_check_black_48dp"/>
+    
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_alignLeft="@id/wrong"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical"
+                android:layout_margin="30dp">
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chris Evans"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:textSize="30sp" />
+    
+                <Button
+                    android:id="@+id/next_student"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Next Student"
+                    android:background="#d0006a4e"
+                    android:layout_marginTop="60dp"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
+    
+        </RelativeLayout>
+    
+    </LinearLayout>
+</FrameLayout>
+
