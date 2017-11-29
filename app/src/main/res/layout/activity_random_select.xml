@@ -34,25 +34,31 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_margin="10dp">
+
             <Button
                 android:id="@+id/course"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:background="#60006a4e"
-                android:layout_margin="4dp"
+                android:fontFamily="serif-monospace"
                 android:text="Course List"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/history"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:background="#60006a4e"
-                android:layout_margin="4dp"
+                android:fontFamily="serif-monospace"
                 android:text="History"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
         </LinearLayout>
     
         <RelativeLayout
@@ -109,15 +115,17 @@
                     android:textStyle="bold"
                     android:layout_marginTop="20dp"
                     android:textSize="30sp" />
-    
+
                 <Button
                     android:id="@+id/next_student"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Next Student"
-                    android:background="#d0006a4e"
                     android:layout_marginTop="60dp"
-                    android:textColor="@android:color/white"/>
+                    android:background="#d0006a4e"
+                    android:fontFamily="serif-monospace"
+                    android:text="Next Student"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
             </LinearLayout>
     
         </RelativeLayout>
