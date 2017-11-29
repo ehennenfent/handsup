@@ -28,9 +28,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void menuItemClick(View view) {
+        ;
+    }
+
+    public void selectButtonClick(View view) {
 
         Intent intent = new Intent(this, RandomSelect.class);
         startActivity(intent);
-        //androidDropDownMenuIconItem.setVisibility(View.INVISIBLE);
+    }
+
+    public void historyButtonClick(View view) {
+
+        Intent intent = new Intent(this, HistoryActivity.class);
+        startActivity(intent);
     }
 }
