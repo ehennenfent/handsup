@@ -1,5 +1,6 @@
-package com.example.wlc.handsup;
+package edu.illinois.handsup;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void menuItemClick(View view) {
-        androidDropDownMenuIconItem.setVisibility(View.INVISIBLE);
+
+        Intent intent = new Intent(this, RandomSelect.class);
+        startActivity(intent);
+        //androidDropDownMenuIconItem.setVisibility(View.INVISIBLE);
     }
 }
