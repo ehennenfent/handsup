@@ -3,13 +3,18 @@ package edu.illinois.handsup;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
 
     LinearLayout androidDropDownMenuIconItem;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,18 +33,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void menuItemClick(View view) {
-        ;
-    }
 
-    public void selectButtonClick(View view) {
+        int id = view.getId();
+        if (id == R.id.select_student) {
+            Intent intent = new Intent(this, RandomSelectActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.history) {
+            Intent intent = new Intent(this, HistoryActivity.class);
+            startActivity(intent);
+        }
 
-        Intent intent = new Intent(this, RandomSelect.class);
-        startActivity(intent);
-    }
-
-    public void historyButtonClick(View view) {
-
-        Intent intent = new Intent(this, HistoryActivity.class);
-        startActivity(intent);
     }
 }

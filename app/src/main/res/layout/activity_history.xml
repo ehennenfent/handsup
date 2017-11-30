@@ -1,11 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="edu.illinois.handsup.HistoryActivity">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
-    <include layout="@layout/content_history" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:src="@drawable/handsup"
+        android:scaleType="centerCrop"/>
 
-</android.support.design.widget.CoordinatorLayout>
+    <LinearLayout
+        android:id="@+id/history_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#dff0ffff"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+            <Button
+                android:id="@+id/course_history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="#60006a4e"
+                android:fontFamily="serif-monospace"
+                android:text="Course List"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/student_history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:background="#60006a4e"
+                android:fontFamily="serif-monospace"
+                android:text="Select Student"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:drawableLeft="@drawable/delete"
+                android:background="#00000000"
+                android:onClick="clearEntry"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="Chris Evans"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:textSize="25sp"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/down_arrow"
+                android:background="#60006a4e"
+                android:onClick="decreaseScore"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="1"
+                android:background="#30006a4e"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:drawableRight="@drawable/up_arrow"
+                android:textStyle="bold"
+                android:background="#60006a4e"
+                android:onClick="increaseScore"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:visibility="visible">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:drawableLeft="@drawable/delete"
+                android:background="#00000000"
+                android:onClick="clearEntry"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="Emma Watson"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:textSize="25sp"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/down_arrow"
+                android:background="#60006a4e"
+                android:onClick="decreaseScore"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="1"
+                android:background="#30006a4e"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:drawableRight="@drawable/up_arrow"
+                android:textStyle="bold"
+                android:background="#60006a4e"
+                android:onClick="increaseScore"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:drawableLeft="@drawable/delete"
+                android:background="#00000000"
+                android:onClick="clearEntry"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="Gal Gadot"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:textSize="25sp"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/down_arrow"
+                android:background="#60006a4e"
+                android:onClick="decreaseScore"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="1"
+                android:background="#30006a4e"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:drawableRight="@drawable/up_arrow"
+                android:textStyle="bold"
+                android:background="#60006a4e"
+                android:onClick="increaseScore"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:drawableLeft="@drawable/delete"
+                android:background="#00000000"
+                android:onClick="clearEntry"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="Robert Downey Jr"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:textSize="25sp"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/down_arrow"
+                android:background="#60006a4e"
+                android:onClick="decreaseScore" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="1"
+                android:background="#30006a4e"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:drawableRight="@drawable/up_arrow"
+                android:textStyle="bold"
+                android:background="#60006a4e"
+                android:onClick="increaseScore"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

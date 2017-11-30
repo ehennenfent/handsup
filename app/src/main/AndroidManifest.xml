@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RandomSelect"
+            android:name=".RandomSelectActivity"
             android:label="@string/title_activity_random_select"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".HistoryActivity"
@@ -30,7 +30,7 @@
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value=".MainActivity" />
         </activity>
     </application>
 
