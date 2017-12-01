@@ -34,6 +34,7 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         int i = 1;
         for(Integer key : DataStore.getInstance().getStudentReferences()) {
             LinearLayout child = (LinearLayout) mainLL.getChildAt(i);
+            child.setVisibility(DataStore.getInstance().getLayoutVisibility(key));
             layout_to_id.put(child, key);
             TextView name = (TextView) child.getChildAt(1);
             TextView marks = (TextView) child.getChildAt(3);
@@ -61,7 +62,8 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
 
     public void clearEntry(View view) {
         LinearLayout ll = (LinearLayout) view.getParent();
-        ll.setVisibility(View.INVISIBLE);
+        ll.setVisibility(View.GONE);
+        DataStore.getInstance().setLayoutVisibility(layout_to_id.get(ll), View.GONE);
     }
 
     public void decreaseScore(View view) {
