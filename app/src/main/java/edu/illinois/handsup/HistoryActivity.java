@@ -30,18 +30,26 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         student = (Button) findViewById(R.id.student_history);
         student.setOnClickListener(this);
 
-        layout_to_id = new HashMap<>();
-        int i = 1;
-        for(Integer key : DataStore.getInstance().getStudentReferences()) {
-            LinearLayout child = (LinearLayout) mainLL.getChildAt(i);
+        if (DataStore.getInstance().getOnStartUp()) {
+            layout_to_id = new HashMap<>();
+            int i = 1;
+            for (Integer key : DataStore.getInstance().getStudentReferences()) {
+                LinearLayout child = (LinearLayout) mainLL.getChildAt(i);
+                child.setVisibility(DataStore.getInstance().getLayoutVisibility(key));
+                layout_to_id.put(child, key);
+                i++;
+            }
+            DataStore.getInstance().setOnStartUp(Boolean.FALSE);
+        }
+
+        int j = 1;
+        for (Integer key : DataStore.getInstance().getStudentReferences()) {
+            LinearLayout child = (LinearLayout) mainLL.getChildAt(j);
             child.setVisibility(DataStore.getInstance().getLayoutVisibility(key));
-            layout_to_id.put(child, key);
-            TextView name = (TextView) child.getChildAt(1);
             TextView marks = (TextView) child.getChildAt(3);
             String score = String.valueOf(DataStore.getInstance().getStudentScore(key));
             marks.setText(score);
-            //System.out.print(name.getText());
-            i++;
+            j++;
         }
     }
 
