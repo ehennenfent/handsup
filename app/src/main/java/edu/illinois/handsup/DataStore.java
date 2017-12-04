@@ -58,6 +58,7 @@ public class DataStore {
         onStartUp = Boolean.TRUE;
         if (studentList == null) {
             studentList = new TreeMap<Integer, String>();
+            studentList.put(R.drawable.aishwarya, "Aishwarya Rai");
             studentList.put(R.drawable.brad_pitt, "Brad Pitt");
             studentList.put(R.drawable.charlize_theron, "Charlize Theron");
             studentList.put(R.drawable.chris, "Chris Evans");
@@ -66,10 +67,14 @@ public class DataStore {
             studentList.put(R.drawable.gal_gadot, "Gal Gadot");
             studentList.put(R.drawable.george_clooney, "George Clooney");
             studentList.put(R.drawable.johnny, "Johnny Depp");
+            studentList.put(R.drawable.liam_neeson, "Liam Neeson");
             studentList.put(R.drawable.margot, "Margot Robbie");
             studentList.put(R.drawable.matt_damon, "Matt Damon");
+            studentList.put(R.drawable.meryl_streep, "Meryl Streep");
+            studentList.put(R.drawable.priyanka, "Priyanka Chopra");
             studentList.put(R.drawable.robert_downey_jr, "Robert Downey Jr");
             studentList.put(R.drawable.ryan_gosling, "Ryan Gosling");
+            studentList.put(R.drawable.scarlett, "Scarlett Johansson");
             studentList.put(R.drawable.stone_emma, "Emma Stone");
             studentList.put(R.drawable.tom_cruise, "Tom Cruise");
             studentList.put(R.drawable.will_smith, "Will Smith");
@@ -78,6 +83,7 @@ public class DataStore {
 
         if (studentMarks == null) {
             studentMarks = new TreeMap<Integer, Integer>();
+            studentMarks.put(R.drawable.aishwarya, 0);
             studentMarks.put(R.drawable.brad_pitt, 0);
             studentMarks.put(R.drawable.charlize_theron, 0);
             studentMarks.put(R.drawable.chris, 0);
@@ -86,10 +92,14 @@ public class DataStore {
             studentMarks.put(R.drawable.gal_gadot, 0);
             studentMarks.put(R.drawable.george_clooney, 0);
             studentMarks.put(R.drawable.johnny, 0);
+            studentMarks.put(R.drawable.liam_neeson, 0);
             studentMarks.put(R.drawable.margot, 0);
             studentMarks.put(R.drawable.matt_damon, 0);
+            studentMarks.put(R.drawable.meryl_streep, 0);
+            studentMarks.put(R.drawable.priyanka, 0);
             studentMarks.put(R.drawable.robert_downey_jr, 0);
             studentMarks.put(R.drawable.ryan_gosling, 0);
+            studentMarks.put(R.drawable.scarlett, 0);
             studentMarks.put(R.drawable.stone_emma, 0);
             studentMarks.put(R.drawable.tom_cruise, 0);
             studentMarks.put(R.drawable.will_smith, 0);
@@ -98,6 +108,7 @@ public class DataStore {
 
         if (visibility == null) {
             visibility = new TreeMap<Integer, Integer>();
+            visibility.put(R.drawable.aishwarya, View.VISIBLE);
             visibility.put(R.drawable.brad_pitt, View.VISIBLE);
             visibility.put(R.drawable.charlize_theron, View.VISIBLE);
             visibility.put(R.drawable.chris, View.VISIBLE);
@@ -106,10 +117,14 @@ public class DataStore {
             visibility.put(R.drawable.gal_gadot, View.VISIBLE);
             visibility.put(R.drawable.george_clooney, View.VISIBLE);
             visibility.put(R.drawable.johnny, View.VISIBLE);
+            visibility.put(R.drawable.liam_neeson, View.VISIBLE);
             visibility.put(R.drawable.margot, View.VISIBLE);
             visibility.put(R.drawable.matt_damon, View.VISIBLE);
+            visibility.put(R.drawable.meryl_streep, View.VISIBLE);
+            visibility.put(R.drawable.priyanka, View.VISIBLE);
             visibility.put(R.drawable.robert_downey_jr, View.VISIBLE);
             visibility.put(R.drawable.ryan_gosling, View.VISIBLE);
+            visibility.put(R.drawable.scarlett, View.VISIBLE);
             visibility.put(R.drawable.stone_emma, View.VISIBLE);
             visibility.put(R.drawable.tom_cruise, View.VISIBLE);
             visibility.put(R.drawable.will_smith, View.VISIBLE);
