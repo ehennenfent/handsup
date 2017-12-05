@@ -56,14 +56,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/dropdown_custom_icon_menu"
             android:layout_marginTop="5dp"
-            android:background="#333"
-            android:orientation="horizontal"
+            android:background="#60006a4e"
+            android:orientation="vertical"
             android:padding="3dp"
             android:visibility="invisible">
 
             <Button
                 android:id="@+id/select_student"
-                android:layout_width="185dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#60006a4e"
                 android:fontFamily="serif-monospace"
@@ -76,13 +76,39 @@
                 android:text="randomly select"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"/>
+
+            <Button
+                android:id="@+id/create"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#60006a4e"
+                android:fontFamily="serif-monospace"
+                android:gravity="center"
+                android:onClick="menuItemClick"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="5dp"
+                android:text="group randomly"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"/>
 
             <Button
                 android:id="@+id/history"
-                android:layout_width="188dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="5dp"
                 android:background="#60006a4e"
                 android:fontFamily="serif-monospace"
                 android:gravity="center"
