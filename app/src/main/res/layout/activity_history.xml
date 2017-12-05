@@ -12,17 +12,19 @@
         android:layout_gravity="top"
         android:src="@drawable/handsup"
         android:scaleType="centerCrop"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#dff0ffff">
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#dff0ffff"
         android:nestedScrollingEnabled="true">
 
     <LinearLayout
         android:id="@+id/history_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#dff0ffff"
         android:orientation="vertical"
         android:visibility="visible">
 
@@ -729,7 +731,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:text="Priyanks Chopra"
+                android:text="Priyanka Chopra"
                 android:textStyle="bold"
                 android:gravity="left"
                 android:textSize="25sp"/>
@@ -873,7 +875,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:text="Priyanka Chopra"
+                android:text="Scarlett Johannson"
                 android:textStyle="bold"
                 android:gravity="left"
                 android:textSize="25sp"/>
@@ -1050,5 +1052,6 @@
         </LinearLayout>
     </LinearLayout>
     </ScrollView>
+    </LinearLayout>
 
 </FrameLayout>
