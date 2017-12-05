@@ -93,7 +93,7 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         for (LinearLayout key : layout_to_id.keySet()) {
             TextView marks = (TextView) key.getChildAt(1);
             String student = marks.getText().toString().toLowerCase();
-            if (student.startsWith(query)) {
+            if (student.contains(query)) {
                 key.setVisibility(View.VISIBLE);
             } else {
                 key.setVisibility(View.GONE);
