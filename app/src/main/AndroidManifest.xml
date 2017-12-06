@@ -32,6 +32,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".GroupActivity"
+            android:label="Group of Students Selected"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
