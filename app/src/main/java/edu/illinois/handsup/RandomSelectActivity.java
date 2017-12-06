@@ -60,7 +60,12 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
 
         random = new Random();
 
-        keys  = new ArrayList<Integer>(DataStore.getInstance().getStudentReferences());
+        if (!DataStore.getInstance().getOnStartUp()) {
+            keys = new ArrayList<Integer>(DataStore.getInstance().getRandomGroup());
+        } else {
+            keys  = new ArrayList<Integer>(DataStore.getInstance().getStudentReferences());
+        }
+
         ImageView image = (ImageView) findViewById(R.id.pic);
         TextView text = (TextView) findViewById(R.id.name);
         Integer randomKey   = keys.get( random.nextInt(keys.size()));
