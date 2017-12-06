@@ -24,7 +24,7 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
     private Button wrong;
     private Button history;
     private Button nextStudent;
-    private Button notify;
+    private Button notify, group;
 
     private Random random;
     private List<Integer> keys;
@@ -53,6 +53,9 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
 
         history = (Button) findViewById(R.id.history);
         history.setOnClickListener(this);
+
+        group = (Button) findViewById(R.id.group_of_student);
+        group.setOnClickListener(this);
 
         random = new Random();
 
@@ -119,6 +122,11 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
                 DataStore.getInstance().setStudentScore(lastMember, marks);
                 text = (TextView) findViewById(R.id.name);
                 text.setText(DataStore.getInstance().getStudentName(lastMember) + " \nMarks : " + marks);
+                break;
+
+            case R.id.group_of_student:
+                Intent group = new Intent(this, GroupActivity.class);
+                startActivity(group);
                 break;
 
             default:
