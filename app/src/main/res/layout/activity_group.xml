@@ -38,6 +38,19 @@
                     android:layout_margin="10dp">
 
                     <Button
+                        android:id="@+id/group_course"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="#60006a4e"
+                        android:fontFamily="serif-monospace"
+                        android:text="course list"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <Button
                         android:id="@+id/group_to_history"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -61,7 +74,8 @@
                         android:fontFamily="serif-monospace"
                         android:text="Select Student"
                         android:textColor="@android:color/white"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_gravity="center"/>
 
                 </LinearLayout>
 
@@ -1033,7 +1047,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp">
 
                     <Button
                         android:id="@+id/notify_group"
@@ -1045,8 +1060,8 @@
                         android:drawableLeft="@drawable/ic_action_email"
                         android:drawableTint="@android:color/white"
                         android:fontFamily="serif-monospace"
-                        android:paddingLeft="40dp"
-                        android:paddingRight="40dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
                         android:text="Notify Group"
                         android:textColor="@android:color/white"
                         android:textStyle="bold" />
