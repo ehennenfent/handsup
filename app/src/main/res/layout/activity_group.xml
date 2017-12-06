@@ -75,7 +75,6 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/cursor_pointer"
                         android:background="#00000000"
                         />
 

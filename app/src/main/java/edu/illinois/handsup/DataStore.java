@@ -11,7 +11,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.Map;
 import java.util.Set;
@@ -46,6 +50,19 @@ public class DataStore {
     public Boolean getOnStartUp() {return onStartUp;}
 
     public Set<Integer> getRandomGroup() {return randomGroup;}
+
+    // Limit the random selection to the current group, but incorporate any students that volunteer during the lecture. 
+    public Integer getRandomStudent(){
+        if (getRandomGroup().size() == 0) {
+            buildRandomGroup();
+        }
+        List<Integer> selection = new ArrayList<Integer>(getRandomGroup());
+        selection.addAll(volunteers);
+
+        Collections.shuffle(selection);
+
+        return selection.get(0);
+    }
 
     public Set<Integer> getVolunteers() {return volunteers;}
 

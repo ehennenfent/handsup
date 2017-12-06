@@ -28,7 +28,6 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
     private Button notify, group;
 
     private Random random;
-    private List<Integer> keys;
 
     private int lastMember = R.drawable.chris;
 
@@ -60,15 +59,9 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
 
         random = new Random();
 
-        if (!DataStore.getInstance().getOnStartUp()) {
-            keys = new ArrayList<Integer>(DataStore.getInstance().getRandomGroup());
-        } else {
-            keys  = new ArrayList<Integer>(DataStore.getInstance().getStudentReferences());
-        }
-
         ImageView image = (ImageView) findViewById(R.id.pic);
         TextView text = (TextView) findViewById(R.id.name);
-        Integer randomKey   = keys.get( random.nextInt(keys.size()));
+        Integer randomKey   = DataStore.getInstance().getRandomStudent();
 
         image.setImageResource(randomKey);
         lastMember = randomKey;
@@ -91,9 +84,9 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
             case R.id.next_student:
                 ImageView image = (ImageView) findViewById(R.id.pic);
                 text = (TextView) findViewById(R.id.name);
-                Integer randomKey   = keys.get( random.nextInt(keys.size()));
+                Integer randomKey   = DataStore.getInstance().getRandomStudent();
                 while (randomKey == lastMember){
-                    randomKey   = keys.get( random.nextInt(keys.size()));
+                    randomKey   = DataStore.getInstance().getRandomStudent();
                 }
 
                 image.setImageResource(randomKey);
@@ -166,7 +159,7 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-            finish();
+//            finish();
         }
         catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(RandomSelectActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
