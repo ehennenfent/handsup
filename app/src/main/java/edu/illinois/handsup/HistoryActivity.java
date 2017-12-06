@@ -19,7 +19,7 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
 
     LinearLayout mainLL;
     private static Map<LinearLayout, Integer> layout_to_id;
-    Button course, student;
+    Button course, student, group;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +34,11 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         student = (Button) findViewById(R.id.student_history);
         student.setOnClickListener(this);
 
+        group = findViewById(R.id.group_history);
+        group.setOnClickListener(this);
+
         layout_to_id = new HashMap<>();
-        int j = 2;
+        int j = 0;
         for (Integer key : DataStore.getInstance().getStudentReferences()) {
             LinearLayout child = (LinearLayout) mainLL.getChildAt(j);
             layout_to_id.put(child, key);
@@ -57,6 +60,11 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
 
             case R.id.student_history:
                 intent = new Intent(this, RandomSelectActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.group_history:
+                intent = new Intent(this, GroupActivity.class);
                 startActivity(intent);
                 break;
         }

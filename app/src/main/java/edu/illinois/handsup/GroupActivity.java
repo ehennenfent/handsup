@@ -44,7 +44,7 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
 
         groupLL = (LinearLayout) findViewById(R.id.group_list);
         groupLayout_to_id = new HashMap<>();
-        int j = 1;
+        int j = 0;
         for (Integer key : DataStore.getInstance().getStudentReferences()) {
             LinearLayout child = (LinearLayout) groupLL.getChildAt(j);
             groupLayout_to_id.put(child, key);
