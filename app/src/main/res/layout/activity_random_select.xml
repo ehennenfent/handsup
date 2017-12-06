@@ -47,7 +47,17 @@
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-
+            <Button
+                android:id="@+id/group_of_student"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#60006a4e"
+                android:fontFamily="serif-monospace"
+                android:text="Check Group"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
             <Button
                 android:id="@+id/history"
                 android:layout_width="0dp"
@@ -146,24 +156,12 @@
                     android:text="Notify"
                     android:drawableLeft="@drawable/ic_action_email"
                     android:drawableTint="@android:color/white"
-                    android:paddingRight="40dp"
-                    android:paddingLeft="40dp"
-                    android:layout_marginRight="10dp"
+                    android:paddingRight="30dp"
+                    android:paddingLeft="20dp"
                     android:textColor="@android:color/white"
                     android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/group_of_student"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#d0006a4e"
-                    android:fontFamily="serif-monospace"
-                    android:text="Check Group"
-                    android:paddingRight="40dp"
-                    android:paddingLeft="40dp"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"/>
+
                 
             </LinearLayout>
 
