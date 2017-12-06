@@ -5,6 +5,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.HashSet;
 import java.util.TreeMap;
 import java.util.Map;
@@ -16,11 +22,14 @@ import java.util.Set;
 
 public class DataStore {
 
+    private static Map<String, Integer> keysToDrawables;
     private static Map<Integer, String> studentList;
     private static Map<Integer, Integer> studentMarks;
     private static Map<Integer, Integer> visibility;
     private static Boolean onStartUp;
     private static Set<Integer> volunteers, randomGroup;
+    private static FirebaseDatabase database;
+    private static DatabaseReference ref;
 
     public String getStudentName(Integer idx){
         return studentList.get(idx);
@@ -43,6 +52,7 @@ public class DataStore {
     public void setStudentScore(Integer idx, Integer newScore){
         Log.d("HandsUp", "Setting " + getStudentName(idx) + "'s score to " + newScore);
         studentMarks.put(idx, newScore);
+
     }
 
     public Integer setLayoutVisibility(Integer idx, Integer v){
@@ -72,80 +82,76 @@ public class DataStore {
 
     private void initData() {
         onStartUp = Boolean.TRUE;
+        if (keysToDrawables == null) {
+            keysToDrawables = new TreeMap<String, Integer>();
+            keysToDrawables.put("aishwarya", R.drawable.aishwarya);
+            keysToDrawables.put("brad_pitt", R.drawable.brad_pitt);
+            keysToDrawables.put("charlize_theron", R.drawable.charlize_theron);
+            keysToDrawables.put("chris", R.drawable.chris);
+            keysToDrawables.put("emma", R.drawable.emma);
+            keysToDrawables.put("felicity_jones", R.drawable.felicity_jones);
+            keysToDrawables.put("gal_gadot", R.drawable.gal_gadot);
+            keysToDrawables.put("george_clooney", R.drawable.george_clooney);
+            keysToDrawables.put("johnny", R.drawable.johnny);
+            keysToDrawables.put("liam_neeson", R.drawable.liam_neeson);
+            keysToDrawables.put("margot", R.drawable.margot);
+            keysToDrawables.put("matt_damon", R.drawable.matt_damon);
+            keysToDrawables.put("meryl_streep", R.drawable.meryl_streep);
+            keysToDrawables.put("priyanka", R.drawable.priyanka);
+            keysToDrawables.put("robert_downey_jr", R.drawable.robert_downey_jr);
+            keysToDrawables.put("ryan_gosling", R.drawable.ryan_gosling);
+            keysToDrawables.put("scarlett", R.drawable.scarlett);
+            keysToDrawables.put("stone_emma", R.drawable.stone_emma);
+            keysToDrawables.put("tom_cruise", R.drawable.tom_cruise);
+            keysToDrawables.put("will_smith", R.drawable.will_smith);
+        }
+
         if (studentList == null) {
             studentList = new TreeMap<Integer, String>();
-            studentList.put(R.drawable.aishwarya, "Aishwarya Rai");
-            studentList.put(R.drawable.brad_pitt, "Brad Pitt");
-            studentList.put(R.drawable.charlize_theron, "Charlize Theron");
-            studentList.put(R.drawable.chris, "Chris Evans");
-            studentList.put(R.drawable.emma, "Emma Watson");
-            studentList.put(R.drawable.felicity_jones, "Felicity Jones");
-            studentList.put(R.drawable.gal_gadot, "Gal Gadot");
-            studentList.put(R.drawable.george_clooney, "George Clooney");
-            studentList.put(R.drawable.johnny, "Johnny Depp");
-            studentList.put(R.drawable.liam_neeson, "Liam Neeson");
-            studentList.put(R.drawable.margot, "Margot Robbie");
-            studentList.put(R.drawable.matt_damon, "Matt Damon");
-            studentList.put(R.drawable.meryl_streep, "Meryl Streep");
-            studentList.put(R.drawable.priyanka, "Priyanka Chopra");
-            studentList.put(R.drawable.robert_downey_jr, "Robert Downey Jr");
-            studentList.put(R.drawable.ryan_gosling, "Ryan Gosling");
-            studentList.put(R.drawable.scarlett, "Scarlett Johansson");
-            studentList.put(R.drawable.stone_emma, "Emma Stone");
-            studentList.put(R.drawable.tom_cruise, "Tom Cruise");
-            studentList.put(R.drawable.will_smith, "Will Smith");
             Log.d("HandsUp", "Initialized student list ");
         }
 
+
         if (studentMarks == null) {
             studentMarks = new TreeMap<Integer, Integer>();
-            studentMarks.put(R.drawable.aishwarya, 2);
-            studentMarks.put(R.drawable.brad_pitt, -4);
-            studentMarks.put(R.drawable.charlize_theron, 3);
-            studentMarks.put(R.drawable.chris, -2);
-            studentMarks.put(R.drawable.emma, -5);
-            studentMarks.put(R.drawable.felicity_jones, -1);
-            studentMarks.put(R.drawable.gal_gadot, 0);
-            studentMarks.put(R.drawable.george_clooney, 0);
-            studentMarks.put(R.drawable.johnny, 4);
-            studentMarks.put(R.drawable.liam_neeson, 1);
-            studentMarks.put(R.drawable.margot, 1);
-            studentMarks.put(R.drawable.matt_damon, 1);
-            studentMarks.put(R.drawable.meryl_streep, 0);
-            studentMarks.put(R.drawable.priyanka, 2);
-            studentMarks.put(R.drawable.robert_downey_jr, 0);
-            studentMarks.put(R.drawable.ryan_gosling, 3);
-            studentMarks.put(R.drawable.scarlett, 0);
-            studentMarks.put(R.drawable.stone_emma, 2);
-            studentMarks.put(R.drawable.tom_cruise, 6);
-            studentMarks.put(R.drawable.will_smith, -1);
             Log.d("HandsUp", "Initialized student marks list ");
         }
 
         if (visibility == null) {
             visibility = new TreeMap<Integer, Integer>();
-            visibility.put(R.drawable.aishwarya, View.VISIBLE);
-            visibility.put(R.drawable.brad_pitt, View.VISIBLE);
-            visibility.put(R.drawable.charlize_theron, View.VISIBLE);
-            visibility.put(R.drawable.chris, View.VISIBLE);
-            visibility.put(R.drawable.emma, View.VISIBLE);
-            visibility.put(R.drawable.felicity_jones, View.VISIBLE);
-            visibility.put(R.drawable.gal_gadot, View.VISIBLE);
-            visibility.put(R.drawable.george_clooney, View.VISIBLE);
-            visibility.put(R.drawable.johnny, View.VISIBLE);
-            visibility.put(R.drawable.liam_neeson, View.VISIBLE);
-            visibility.put(R.drawable.margot, View.VISIBLE);
-            visibility.put(R.drawable.matt_damon, View.VISIBLE);
-            visibility.put(R.drawable.meryl_streep, View.VISIBLE);
-            visibility.put(R.drawable.priyanka, View.VISIBLE);
-            visibility.put(R.drawable.robert_downey_jr, View.VISIBLE);
-            visibility.put(R.drawable.ryan_gosling, View.VISIBLE);
-            visibility.put(R.drawable.scarlett, View.VISIBLE);
-            visibility.put(R.drawable.stone_emma, View.VISIBLE);
-            visibility.put(R.drawable.tom_cruise, View.VISIBLE);
-            visibility.put(R.drawable.will_smith, View.VISIBLE);
             Log.d("HandsUp", "Initialized layout visibility ");
         }
+
+
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("/users");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                for (String key : keysToDrawables.keySet()){
+                    User data = dataSnapshot.child(key).getValue(User.class);
+                    data.set_supplemental(key, keysToDrawables.get(key));
+                    Log.d("Hands Up", data.uid);
+                    studentList.put(keysToDrawables.get(key), data.name);
+                    studentMarks.put(keysToDrawables.get(key),  data.score);
+                    visibility.put(keysToDrawables.get(key), View.VISIBLE);
+                }
+                Log.d("HandsUp", "Initialized Data from Firebase!");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("HandsUp", "Failed to read value.", error.toException());
+            }
+        });
+
+
+
+
+
 
         volunteers = new HashSet<Integer>();
         volunteers.add(R.drawable.aishwarya);
