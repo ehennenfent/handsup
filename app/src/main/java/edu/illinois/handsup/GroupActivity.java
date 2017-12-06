@@ -20,12 +20,15 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
 
     LinearLayout groupLL;
     private static Map<LinearLayout, Integer> groupLayout_to_id;
-    Button history, select_student, notify_group, next_group;
+    Button course, history, select_student, notify_group, next_group;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group);
+
+        course = (Button) findViewById(R.id.group_course);
+        course.setOnClickListener(this);
 
         history = (Button) findViewById(R.id.group_to_history);
         history.setOnClickListener(this);
@@ -86,6 +89,11 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         Intent intent;
         switch (view.getId()) {
+            case R.id.group_course:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+
             case R.id.group_to_history:
                 intent = new Intent(this, HistoryActivity.class);
                 startActivity(intent);
