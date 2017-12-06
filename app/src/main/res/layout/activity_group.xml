@@ -16,7 +16,113 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#dff0ffff">
+        android:background="#dff0ffff"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+            <Button
+                android:id="@+id/group_course"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="#60006a4e"
+                android:fontFamily="serif-monospace"
+                android:text="course list"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/select_from_group"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:background="#60006a4e"
+                android:fontFamily="serif-monospace"
+                android:text="Select Student"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+
+            <Button
+                android:id="@+id/group_to_history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="#60006a4e"
+                android:fontFamily="serif-monospace"
+                android:text="History"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+            <Button
+                android:id="@+id/notify_group"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="#d0006a4e"
+                android:drawableLeft="@drawable/ic_action_email"
+                android:drawableTint="@android:color/white"
+                android:fontFamily="serif-monospace"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Notify Group"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/next_group"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#d0006a4e"
+                android:fontFamily="serif-monospace"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:text="Next Group"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:tint="@android:color/black"
+                android:hint="click to search..."
+                android:drawableLeft="@drawable/ic_action_search"
+                android:onClick="onStudentSerch"/>
+
+
+        </LinearLayout>
 
         <ScrollView
             android:layout_width="fill_parent"
@@ -30,54 +136,7 @@
                 android:orientation="vertical"
                 android:visibility="visible">
 
-                <LinearLayout
-                    android:id="@+id/toolbar2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp">
 
-                    <Button
-                        android:id="@+id/group_course"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:layout_weight="1"
-                        android:background="#60006a4e"
-                        android:fontFamily="serif-monospace"
-                        android:text="course list"
-                        android:textColor="@android:color/white"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/group_to_history"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:layout_weight="1"
-                        android:background="#60006a4e"
-                        android:fontFamily="serif-monospace"
-                        android:text="History"
-                        android:textColor="@android:color/white"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/select_from_group"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:textSize="16sp"
-                        android:layout_weight="1"
-                        android:background="#60006a4e"
-                        android:fontFamily="serif-monospace"
-                        android:text="Select Student"
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold"
-                        android:layout_gravity="center"/>
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1044,42 +1103,7 @@
                         android:onClick="increaseScore"/>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp">
 
-                    <Button
-                        android:id="@+id/notify_group"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:background="#d0006a4e"
-                        android:drawableLeft="@drawable/ic_action_email"
-                        android:drawableTint="@android:color/white"
-                        android:fontFamily="serif-monospace"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:text="Notify Group"
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/next_group"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#d0006a4e"
-                        android:fontFamily="serif-monospace"
-                        android:paddingLeft="40dp"
-                        android:paddingRight="40dp"
-                        android:text="Next Group"
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
 
             </LinearLayout>
 
