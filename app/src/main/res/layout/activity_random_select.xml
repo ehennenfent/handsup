@@ -140,6 +140,7 @@
                 android:fontFamily="serif-monospace"
                 android:text="Notify for preperation"
                 android:drawableLeft="@drawable/ic_action_email"
+                android:drawableTint="@android:color/white"
                 android:paddingRight="40dp"
                 android:paddingLeft="40dp"
                 android:textColor="@android:color/white"
