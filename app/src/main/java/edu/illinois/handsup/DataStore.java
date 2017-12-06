@@ -23,8 +23,7 @@ import java.util.Set;
 public class DataStore {
 
     private static Map<String, Integer> keysToDrawables;
-    private static Map<Integer, String> studentList;
-    private static Map<Integer, Integer> studentMarks;
+    private static Map<Integer, User> studentList;
     private static Map<Integer, Integer> visibility;
     private static Boolean onStartUp;
     private static Set<Integer> volunteers, randomGroup;
@@ -32,11 +31,11 @@ public class DataStore {
     private static DatabaseReference ref;
 
     public String getStudentName(Integer idx){
-        return studentList.get(idx);
+        return studentList.get(idx).name;
     }
 
     public Integer getStudentScore(Integer idx){
-        return studentMarks.get(idx);
+        return studentList.get(idx).score;
     }
 
     public Integer getLayoutVisibility(Integer idx){
@@ -51,8 +50,8 @@ public class DataStore {
 
     public void setStudentScore(Integer idx, Integer newScore){
         Log.d("HandsUp", "Setting " + getStudentName(idx) + "'s score to " + newScore);
-        studentMarks.put(idx, newScore);
-
+        studentList.get(idx).score = newScore;
+        ref.child(studentList.get(idx).uid).setValue(studentList.get(idx));
     }
 
     public Integer setLayoutVisibility(Integer idx, Integer v){
@@ -73,11 +72,11 @@ public class DataStore {
 
     public Integer getAverage() {
         Integer sum = 0;
-        for (Integer marks : studentMarks.values()) {
-            sum += marks;
+        for (User student : studentList.values()) {
+            sum += student.score;
         }
 
-        return sum/studentMarks.values().size();
+        return sum/studentList.values().size();
     }
 
     private void initData() {
@@ -107,14 +106,8 @@ public class DataStore {
         }
 
         if (studentList == null) {
-            studentList = new TreeMap<Integer, String>();
+            studentList = new TreeMap<Integer, User>();
             Log.d("HandsUp", "Initialized student list ");
-        }
-
-
-        if (studentMarks == null) {
-            studentMarks = new TreeMap<Integer, Integer>();
-            Log.d("HandsUp", "Initialized student marks list ");
         }
 
         if (visibility == null) {
@@ -133,9 +126,7 @@ public class DataStore {
                 for (String key : keysToDrawables.keySet()){
                     User data = dataSnapshot.child(key).getValue(User.class);
                     data.set_supplemental(key, keysToDrawables.get(key));
-                    Log.d("Hands Up", data.uid);
-                    studentList.put(keysToDrawables.get(key), data.name);
-                    studentMarks.put(keysToDrawables.get(key),  data.score);
+                    studentList.put(keysToDrawables.get(key), data);
                     visibility.put(keysToDrawables.get(key), View.VISIBLE);
                 }
                 Log.d("HandsUp", "Initialized Data from Firebase!");
