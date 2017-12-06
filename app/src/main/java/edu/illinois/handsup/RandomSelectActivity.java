@@ -4,17 +4,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.util.Log;
+import android.net.Uri;
 
 import java.util.*;
 
 import android.content.Intent;
-import android.widget.Toast;
 
 public class RandomSelectActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,7 +24,8 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
     private Button right;
     private Button wrong;
     private Button history;
-    private Button nextStudent, group, notify;
+    private Button nextStudent;
+    private Button notify, group;
 
     private Random random;
     private List<Integer> keys;
@@ -58,12 +60,7 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
 
         random = new Random();
 
-        if (!DataStore.getInstance().getOnStartUp()) {
-            keys = new ArrayList<Integer>(DataStore.getInstance().getRandomGroup());
-        } else {
-            keys  = new ArrayList<Integer>(DataStore.getInstance().getStudentReferences());
-        }
-
+        keys  = new ArrayList<Integer>(DataStore.getInstance().getStudentReferences());
         ImageView image = (ImageView) findViewById(R.id.pic);
         TextView text = (TextView) findViewById(R.id.name);
         Integer randomKey   = keys.get( random.nextInt(keys.size()));
@@ -76,13 +73,10 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
 
         notify = (Button) findViewById(R.id.notify_student);
         notify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Toast.makeText(getApplicationContext(),
-                        "Email Sent.", Toast.LENGTH_LONG).show();
+            public void onClick(View view) {
+                sendEmail();
             }
         });
-
     }
 
     public void onClick(View view) {
@@ -134,23 +128,6 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
                 startActivity(group);
                 break;
 
-            /*
-            case R.id.notify_student:
-                Intent mail = new Intent(Intent.ACTION_SEND);
-                mail.setType("text/plain");
-                mail.putExtra(Intent.EXTRA_EMAIL  , new String[]{"harshita1805@gmail.com"});
-                mail.putExtra(Intent.EXTRA_SUBJECT, "CS 476 : Student Selected for Class Participation");
-                mail.putExtra(Intent.EXTRA_TEXT   , "Hi " + DataStore.getInstance().getStudentName(lastMember));
-                try {
-                    startActivity(Intent.createChooser(mail, "Send mail..."));
-                    finish();
-                    Log.i("Finished sending email.", "");
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(RandomSelectActivity.this, "There are no email clients installed."
-                            , Toast.LENGTH_SHORT).show();
-                }
-                break;*/
-
             default:
                 Log.d("HandsUp", "Unrecognized click event!");
         }
@@ -169,6 +146,26 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
             return true;*/
         }
         return true;
+    }
+
+    public void sendEmail(){
+        String[] TO = {DataStore.getInstance().getStudentName(lastMember)};
+        String[] CC = {""};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            finish();
+        }
+        catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(RandomSelectActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

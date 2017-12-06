@@ -1,11 +1,13 @@
 package edu.illinois.handsup;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
             Intent intent = new Intent(this, GroupActivity.class);
             startActivity(intent);
+            notifyGroup();
         }
 
     }
@@ -81,5 +84,30 @@ public class MainActivity extends AppCompatActivity {
 
         DataStore.getInstance().addToRandomGroup(bottomScorers);
         DataStore.getInstance().addToRandomGroup(topScorers);
+    }
+
+    public void notifyGroup(){
+        Set<Integer> group = DataStore.getInstance().getRandomGroup();
+        ArrayList<String> ar = new ArrayList<String>();
+        for(Integer i : group)
+            ar.add(DataStore.getInstance().getStudentName(i));
+        String[] TO = new String[ar.size()];
+        TO = ar.toArray(TO);
+        String[] CC = {""};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail"));
+            finish();
+        }
+        catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(MainActivity.this, "there is no email client installed", Toast.LENGTH_SHORT).show();
+        }
     }
 }
