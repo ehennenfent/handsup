@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import java.util.HashSet;
 import java.util.TreeMap;
 import java.util.Map;
 import java.util.Set;
@@ -19,6 +20,7 @@ public class DataStore {
     private static Map<Integer, Integer> studentMarks;
     private static Map<Integer, Integer> visibility;
     private static Boolean onStartUp;
+    private static Set<Integer> volunteers, randomGroup;
 
     public String getStudentName(Integer idx){
         return studentList.get(idx);
@@ -33,6 +35,10 @@ public class DataStore {
     }
 
     public Boolean getOnStartUp() {return onStartUp;}
+
+    public Set<Integer> getRandomGroup() {return randomGroup;}
+
+    public Set<Integer> getVolunteers() {return volunteers;}
 
     public void setStudentScore(Integer idx, Integer newScore){
         Log.d("HandsUp", "Setting " + getStudentName(idx) + "'s score to " + newScore);
@@ -49,9 +55,19 @@ public class DataStore {
 
     public void setOnStartUp(Boolean b) {onStartUp = b;}
 
+    public void addToRandomGroup(Set<Integer> a) {randomGroup.addAll(a);}
 
     public DataStore(){
         initData();
+    }
+
+    public Integer getAverage() {
+        Integer sum = 0;
+        for (Integer marks : studentMarks.values()) {
+            sum += marks;
+        }
+
+        return sum/studentMarks.values().size();
     }
 
     private void initData() {
@@ -83,26 +99,26 @@ public class DataStore {
 
         if (studentMarks == null) {
             studentMarks = new TreeMap<Integer, Integer>();
-            studentMarks.put(R.drawable.aishwarya, 0);
-            studentMarks.put(R.drawable.brad_pitt, 0);
-            studentMarks.put(R.drawable.charlize_theron, 0);
-            studentMarks.put(R.drawable.chris, 0);
-            studentMarks.put(R.drawable.emma, 0);
-            studentMarks.put(R.drawable.felicity_jones, 0);
+            studentMarks.put(R.drawable.aishwarya, 2);
+            studentMarks.put(R.drawable.brad_pitt, -4);
+            studentMarks.put(R.drawable.charlize_theron, 3);
+            studentMarks.put(R.drawable.chris, -2);
+            studentMarks.put(R.drawable.emma, -5);
+            studentMarks.put(R.drawable.felicity_jones, -1);
             studentMarks.put(R.drawable.gal_gadot, 0);
             studentMarks.put(R.drawable.george_clooney, 0);
-            studentMarks.put(R.drawable.johnny, 0);
-            studentMarks.put(R.drawable.liam_neeson, 0);
-            studentMarks.put(R.drawable.margot, 0);
-            studentMarks.put(R.drawable.matt_damon, 0);
+            studentMarks.put(R.drawable.johnny, 4);
+            studentMarks.put(R.drawable.liam_neeson, 1);
+            studentMarks.put(R.drawable.margot, 1);
+            studentMarks.put(R.drawable.matt_damon, 1);
             studentMarks.put(R.drawable.meryl_streep, 0);
-            studentMarks.put(R.drawable.priyanka, 0);
+            studentMarks.put(R.drawable.priyanka, 2);
             studentMarks.put(R.drawable.robert_downey_jr, 0);
-            studentMarks.put(R.drawable.ryan_gosling, 0);
+            studentMarks.put(R.drawable.ryan_gosling, 3);
             studentMarks.put(R.drawable.scarlett, 0);
-            studentMarks.put(R.drawable.stone_emma, 0);
-            studentMarks.put(R.drawable.tom_cruise, 0);
-            studentMarks.put(R.drawable.will_smith, 0);
+            studentMarks.put(R.drawable.stone_emma, 2);
+            studentMarks.put(R.drawable.tom_cruise, 6);
+            studentMarks.put(R.drawable.will_smith, -1);
             Log.d("HandsUp", "Initialized student marks list ");
         }
 
@@ -130,6 +146,13 @@ public class DataStore {
             visibility.put(R.drawable.will_smith, View.VISIBLE);
             Log.d("HandsUp", "Initialized layout visibility ");
         }
+
+        volunteers = new HashSet<Integer>();
+        volunteers.add(R.drawable.aishwarya);
+        volunteers.add(R.drawable.felicity_jones);
+
+        randomGroup = new HashSet<Integer>();
+        randomGroup.addAll(volunteers);
     }
 
     private static final DataStore store = new DataStore();

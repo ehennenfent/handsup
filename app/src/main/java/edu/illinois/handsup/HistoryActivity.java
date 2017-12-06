@@ -1,13 +1,16 @@
 package edu.illinois.handsup;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -59,10 +62,30 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    public void clearEntry(View view) {
-        LinearLayout ll = (LinearLayout) view.getParent();
-        ll.setVisibility(View.GONE);
-        DataStore.getInstance().setLayoutVisibility(layout_to_id.get(ll), View.GONE);
+    public void clearEntry(final View view) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Are you sure about deleting this student?");
+
+        alertDialogBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                LinearLayout ll = (LinearLayout) view.getParent();
+                ll.setVisibility(View.GONE);
+                DataStore.getInstance().setLayoutVisibility(layout_to_id.get(ll), View.GONE);
+                Toast.makeText(getApplicationContext(), "deleted.", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "canceled.", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
     }
 
     public void decreaseScore(View view) {
@@ -100,4 +123,5 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
             }
         }
     }
+
 }

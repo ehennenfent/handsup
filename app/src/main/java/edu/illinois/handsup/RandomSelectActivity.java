@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
     private Button wrong;
     private Button history;
     private Button nextStudent;
+    private Button notify;
 
     private Random random;
     private List<Integer> keys;
@@ -65,6 +67,14 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
         int marks = DataStore.getInstance().getStudentScore(randomKey);
         text.setText(DataStore.getInstance().getStudentName(randomKey) + " \nMarks : " + marks);
 
+        notify = (Button) findViewById(R.id.notify_student);
+        notify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Toast.makeText(getApplicationContext(),
+                        "Email Sent.", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void onClick(View view) {
@@ -130,5 +140,6 @@ public class RandomSelectActivity extends AppCompatActivity implements View.OnCl
         }
         return true;
     }
+
 
 }
