@@ -24,7 +24,7 @@
             android:nestedScrollingEnabled="true">
 
             <LinearLayout
-                android:id="@+id/history_list"
+                android:id="@+id/group_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -38,20 +38,20 @@
                     android:layout_margin="10dp">
 
                     <Button
-                        android:id="@+id/course_history"
+                        android:id="@+id/group_to_history"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="#60006a4e"
                         android:fontFamily="serif-monospace"
-                        android:text="Course List"
+                        android:text="History"
                         android:textColor="@android:color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <Button
-                        android:id="@+id/student_history"
+                        android:id="@+id/select_from_group"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
@@ -69,34 +69,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
-
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:tint="@android:color/black"
-                        android:hint="click to search..."
-                        android:drawableLeft="@drawable/ic_action_search"
-                        android:onClick="onStudentSerch"/>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:padding="10dp">
 
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
+                        android:drawableLeft="@drawable/cursor_pointer"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
 
                     <TextView
                         android:layout_width="0dp"
@@ -146,9 +127,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -195,9 +175,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -244,9 +223,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -294,9 +272,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -343,9 +320,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -392,9 +368,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -441,9 +416,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -490,9 +464,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -539,9 +512,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -588,9 +560,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -637,9 +608,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -686,9 +656,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -735,9 +704,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -784,9 +752,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -833,9 +800,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -882,9 +848,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -931,9 +896,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -980,9 +944,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -1029,9 +992,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.75"
-                        android:drawableLeft="@drawable/delete"
                         android:background="#00000000"
-                        android:onClick="clearEntry"/>
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"

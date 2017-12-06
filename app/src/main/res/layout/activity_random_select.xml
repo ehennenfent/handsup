@@ -3,21 +3,21 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
-    
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="top"
         android:src="@drawable/handsup"
         android:scaleType="centerCrop"/>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="top"
         android:background="#dff0ffff">
-    
+
         <Toolbar
             android:id="@+id/toolbar_menu"
             android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
-    
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -99,7 +99,7 @@
                 android:drawableTop="@drawable/ic_check_black_48dp"
                 android:gravity="center"
                 android:paddingTop="20dp" />
-    
+
         </RelativeLayout>
 
         <TextView
@@ -132,23 +132,47 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"/>
 
-            <Button
-                android:id="@+id/notify_student"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#d0006a4e"
-                android:fontFamily="serif-monospace"
-                android:text="Notify for preperation"
-                android:drawableLeft="@drawable/ic_action_email"
-                android:drawableTint="@android:color/white"
-                android:paddingRight="40dp"
-                android:paddingLeft="40dp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/notify_student"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="#d0006a4e"
+                    android:fontFamily="serif-monospace"
+                    android:text="Notify"
+                    android:drawableLeft="@drawable/ic_action_email"
+                    android:drawableTint="@android:color/white"
+                    android:paddingRight="40dp"
+                    android:paddingLeft="40dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/group_of_student"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#d0006a4e"
+                    android:fontFamily="serif-monospace"
+                    android:text="Check Group"
+                    android:paddingRight="40dp"
+                    android:paddingLeft="40dp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"/>
+                
+            </LinearLayout>
 
         </LinearLayout>
-    
+
     </LinearLayout>
 
 </FrameLayout>
+
+
+
 
