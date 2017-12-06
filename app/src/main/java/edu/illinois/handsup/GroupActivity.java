@@ -1,6 +1,7 @@
 package edu.illinois.handsup;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,15 +9,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class GroupActivity extends AppCompatActivity implements View.OnClickListener{
 
     LinearLayout groupLL;
     private static Map<LinearLayout, Integer> groupLayout_to_id;
-    Button history, select_student;
+    Button history, select_student, notify_group, next_group;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,12 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
 
         select_student = (Button) findViewById(R.id.select_from_group);
         select_student.setOnClickListener(this);
+
+        notify_group = (Button) findViewById(R.id.notify_group);
+        notify_group.setOnClickListener(this);
+
+        next_group = (Button) findViewById(R.id.next_group);
+        next_group.setOnClickListener(this);
 
         groupLL = (LinearLayout) findViewById(R.id.group_list);
         groupLayout_to_id = new HashMap<>();
@@ -85,6 +95,41 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
                 intent = new Intent(this, RandomSelectActivity.class);
                 startActivity(intent);
                 break;
+
+            case R.id.notify_group:
+                notifyGroup();
+                break;
+
+            case R.id.next_group:
+                DataStore.getInstance().buildRandomGroup();
+                intent = new Intent(this, GroupActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
+
+    public void notifyGroup(){
+        Set<Integer> group = DataStore.getInstance().getRandomGroup();
+        ArrayList<String> ar = new ArrayList<String>();
+        for(Integer i : group)
+            ar.add(DataStore.getInstance().getStudentName(i));
+        String[] TO = new String[ar.size()];
+        TO = ar.toArray(TO);
+        String[] CC = {""};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail"));
+//            finish();
+        }
+        catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(GroupActivity.this, "there is no email client installed", Toast.LENGTH_SHORT).show();
         }
     }
 }

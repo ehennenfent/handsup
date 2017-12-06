@@ -1031,9 +1031,46 @@
                         android:onClick="increaseScore"/>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/notify_group"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="#d0006a4e"
+                        android:drawableLeft="@drawable/ic_action_email"
+                        android:drawableTint="@android:color/white"
+                        android:fontFamily="serif-monospace"
+                        android:paddingLeft="40dp"
+                        android:paddingRight="40dp"
+                        android:text="Notify Group"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/next_group"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#d0006a4e"
+                        android:fontFamily="serif-monospace"
+                        android:paddingLeft="40dp"
+                        android:paddingRight="40dp"
+                        android:text="Next Group"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
         </ScrollView>
+
 
     </LinearLayout>
 

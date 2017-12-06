@@ -29,6 +29,7 @@ public class DataStore {
     private static Set<Integer> volunteers, randomGroup;
     private static FirebaseDatabase database;
     private static DatabaseReference ref;
+    private static Integer groupIndex = 0;
 
     public String getStudentName(Integer idx){
         return studentList.get(idx).name;
@@ -62,9 +63,23 @@ public class DataStore {
         return studentList.keySet();
     }
 
-    public void setOnStartUp(Boolean b) {onStartUp = b;}
+    public void buildRandomGroup() {
+        randomGroup.addAll(volunteers);
+        volunteers = new HashSet<Integer>();
+        randomGroup = new HashSet<Integer>();
 
-    public void addToRandomGroup(Set<Integer> a) {randomGroup.addAll(a);}
+        boolean next_index_okay = false;
+        for (User u : studentList.values()){
+            if (u.group == groupIndex){
+                randomGroup.add(u.drawable);
+            }
+            if(u.group == (groupIndex + 1)){
+                next_index_okay = true;
+            }
+        }
+        groupIndex = next_index_okay ? groupIndex + 1 : 0;
+
+    }
 
     public DataStore(){
         initData();
@@ -115,6 +130,9 @@ public class DataStore {
             Log.d("HandsUp", "Initialized layout visibility ");
         }
 
+        volunteers = new HashSet<Integer>();
+        randomGroup = new HashSet<Integer>();
+
 
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("/users");
@@ -128,6 +146,10 @@ public class DataStore {
                     data.set_supplemental(key, keysToDrawables.get(key));
                     studentList.put(keysToDrawables.get(key), data);
                     visibility.put(keysToDrawables.get(key), View.VISIBLE);
+                    if (data.did_volunteer){
+                        volunteers.add(keysToDrawables.get(key));
+                        studentList.get(keysToDrawables.get(key)).did_volunteer = false;
+                    }
                 }
                 Log.d("HandsUp", "Initialized Data from Firebase!");
             }
@@ -139,17 +161,6 @@ public class DataStore {
             }
         });
 
-
-
-
-
-
-        volunteers = new HashSet<Integer>();
-        volunteers.add(R.drawable.aishwarya);
-        volunteers.add(R.drawable.felicity_jones);
-
-        randomGroup = new HashSet<Integer>();
-        randomGroup.addAll(volunteers);
     }
 
     private static final DataStore store = new DataStore();
